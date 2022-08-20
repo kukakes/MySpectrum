@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+        <DebugType>pdbonly</DebugType>
+        <DebugSymbols>true</DebugSymbols>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Prism.DryIoc.Forms" Version="8.1.97" />
+        <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="ViewModels" />
+      <Folder Include="Views" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\MySpectrum.Core\MySpectrum.Core.csproj" />
+      <ProjectReference Include="..\..\MySpectrum.Data\MySpectrum.Data.csproj" />
+    </ItemGroup>
+</Project>
