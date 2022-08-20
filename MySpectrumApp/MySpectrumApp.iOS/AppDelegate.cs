@@ -33,7 +33,6 @@ namespace MySpectrumApp.iOS
     {
         public void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            throw new NotImplementedException();
         }
     }
 }

@@ -6,9 +6,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MySpectrumApp.Android", "My
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MySpectrumApp.iOS", "MySpectrumApp\MySpectrumApp.iOS\MySpectrumApp.iOS.csproj", "{0A7632F7-88B0-4DA8-AD32-F791344E455B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MySpectrum.Data", "MySpectrum.Data\MySpectrum.Data.csproj", "{2487A2BE-5C76-4C73-B76F-38C35C9B00FE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MySpectrum.DataStore", "MySpectrum.DataStore\MySpectrum.DataStore.csproj", "{2487A2BE-5C76-4C73-B76F-38C35C9B00FE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MySpectrum.Core", "MySpectrum.Core\MySpectrum.Core.csproj", "{5AC5E7AD-78A2-485F-9FC7-BC34F0EE41EF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MySpectrum.Services", "MySpectrum.Services\MySpectrum.Services.csproj", "{8008DEEB-1E7C-4E8E-B671-22E3D2801F0E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -118,5 +120,21 @@ Global
 		{5AC5E7AD-78A2-485F-9FC7-BC34F0EE41EF}.Release|iPhone.Build.0 = Release|Any CPU
 		{5AC5E7AD-78A2-485F-9FC7-BC34F0EE41EF}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
 		{5AC5E7AD-78A2-485F-9FC7-BC34F0EE41EF}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+		{8008DEEB-1E7C-4E8E-B671-22E3D2801F0E}.Ad-Hoc|iPhone.ActiveCfg = Debug|Any CPU
+		{8008DEEB-1E7C-4E8E-B671-22E3D2801F0E}.Ad-Hoc|iPhone.Build.0 = Debug|Any CPU
+		{8008DEEB-1E7C-4E8E-B671-22E3D2801F0E}.AppStore|iPhone.ActiveCfg = Debug|Any CPU
+		{8008DEEB-1E7C-4E8E-B671-22E3D2801F0E}.AppStore|iPhone.Build.0 = Debug|Any CPU
+		{8008DEEB-1E7C-4E8E-B671-22E3D2801F0E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8008DEEB-1E7C-4E8E-B671-22E3D2801F0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8008DEEB-1E7C-4E8E-B671-22E3D2801F0E}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{8008DEEB-1E7C-4E8E-B671-22E3D2801F0E}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{8008DEEB-1E7C-4E8E-B671-22E3D2801F0E}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{8008DEEB-1E7C-4E8E-B671-22E3D2801F0E}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{8008DEEB-1E7C-4E8E-B671-22E3D2801F0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8008DEEB-1E7C-4E8E-B671-22E3D2801F0E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8008DEEB-1E7C-4E8E-B671-22E3D2801F0E}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{8008DEEB-1E7C-4E8E-B671-22E3D2801F0E}.Release|iPhone.Build.0 = Release|Any CPU
+		{8008DEEB-1E7C-4E8E-B671-22E3D2801F0E}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{8008DEEB-1E7C-4E8E-B671-22E3D2801F0E}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

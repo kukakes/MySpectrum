@@ -26,7 +26,6 @@ namespace MySpectrumApp.Android
     {
         public void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            throw new NotImplementedException();
         }
     }
 }

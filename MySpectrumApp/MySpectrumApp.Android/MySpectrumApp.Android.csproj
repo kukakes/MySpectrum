@@ -14,7 +14,6 @@
         <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
         <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
         <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
-        <AndroidUseLatestPlatformSdk>false</AndroidUseLatestPlatformSdk>
         <TargetFrameworkVersion>v12.0</TargetFrameworkVersion>
         <AndroidHttpClientHandlerType>Xamarin.Android.Net.AndroidClientHandler</AndroidHttpClientHandlerType>
     </PropertyGroup>
@@ -67,7 +66,7 @@
     </ItemGroup>
     <ItemGroup>
         <ProjectReference Include="..\MySpectrumApp\MySpectrumApp.csproj">
-            <Project>{687F7D3F-BBB5-4176-B56E-E5C2407B907A}</Project>
+            <Project>{03DDC3A1-9662-4290-9A5D-A786460A92F7}</Project>
             <Name>MySpectrumApp</Name>
         </ProjectReference>
     </ItemGroup>

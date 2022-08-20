@@ -1,4 +1,8 @@
 ﻿using System;
+using MySpectrum.Core.Services;
+using MySpectrum.Services;
+using MySpectrumApp.ViewModels;
+using MySpectrumApp.Views;
 using Prism;
 using Prism.DryIoc;
 using Prism.Ioc;
@@ -14,9 +18,7 @@ namespace MySpectrumApp
         public App(IPlatformInitializer platformInitializer)
             :base(platformInitializer)
         {
-            InitializeComponent();
-
-            MainPage = new MainPage();
+            //MainPage = new LoginView();
         }
 
         protected override void OnStart()
@@ -29,19 +31,25 @@ namespace MySpectrumApp
             // Handle when your app sleeps
         }
 
-        protected override void OnInitialized()
-        {
-            throw new NotImplementedException();
-        }
-
         protected override void OnResume()
         {
             // Handle when your app resumes
         }
 
+        protected override async void OnInitialized()
+        {
+            InitializeComponent();
+
+            await NavigationService.NavigateAsync($"{nameof(LoginView)}");
+        }
+        
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            throw new NotImplementedException();
+            containerRegistry.Register<ILoginService, LoginService>();
+            
+            containerRegistry.RegisterForNavigation<NavigationPage>();
+            containerRegistry.RegisterForNavigation<LoginView, LoginViewModel>();
+            containerRegistry.RegisterForNavigation<ProductsListView, ProductsListViewModel>();
         }
     }
 }
