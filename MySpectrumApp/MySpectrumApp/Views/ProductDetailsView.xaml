@@ -26,6 +26,11 @@
                   Margin="0,10"
                   BackgroundColor="Lavender"
                   FlexLayout.Basis="100%"/>
+            <Label Text="Product Image Placeholder"
+                   FlexLayout.Basis="100%"
+                   FontSize="12"
+                   Margin="0,0,0,24"
+                   HorizontalTextAlignment="Center"/>
             <Label Text="{Binding Product.Description}"
                    FontSize="26"
                    FontAttributes="Italic"

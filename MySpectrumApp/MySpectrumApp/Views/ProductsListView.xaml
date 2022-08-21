@@ -27,14 +27,15 @@
                        CancelButtonColor="Red"
                        Placeholder="search title"
                        IsSpellCheckEnabled="False"
+                       Unfocused="search_Unfocused"
                        SearchCommand="{Binding ApplySearchFilterCommand}" 
                        SearchCommandParameter="{Binding Text, Source={x:Reference search}}"/>
 
             <Button Text="{Binding AscendingSortOrder, Converter={StaticResource sortConverter}}"
                     BackgroundColor="LightGray"
-                    Margin="20,0"
+                    Margin="20,10"
                     HorizontalOptions="End"
-                    WidthRequest="80"
+                    WidthRequest="120"
                     TextColor="DarkRed"
                     Grid.Row="1"
                     Command="{Binding ChangeSortOrderCommand}"/>

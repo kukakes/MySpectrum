@@ -37,10 +37,17 @@
                    HorizontalTextAlignment="Center"
                    FlexLayout.Basis="100%"/>
 
-            <Label Text="Enter any text more than 2 chars for id and password to proceed"
-                   Margin="0,60,0,80"
+            <Label Margin="0,60,0,80"
                    HorizontalTextAlignment="Start"
-                   FlexLayout.Basis="100%"/>
+                   FlexLayout.Basis="100%">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Enter any text "/>
+                        <Span Text="more than 2 chars" FontAttributes="Bold, Italic" TextColor="Red"/>
+                        <Span Text=" for id and password to proceed"/>
+                    </FormattedString>
+                </Label.FormattedText>                
+            </Label>
 
             <Label Text="Login Id" WidthRequest="100"/>
             <Entry Text="{Binding UserName}">

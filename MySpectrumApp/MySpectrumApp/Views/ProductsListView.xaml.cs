@@ -1,9 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -15,6 +9,15 @@ namespace MySpectrumApp.Views
         public ProductsListView()
         {
             InitializeComponent();
+        }
+
+        void search_Unfocused(System.Object sender, Xamarin.Forms.FocusEventArgs e)
+        {
+            if(sender is SearchBar searchBar &&
+               string.IsNullOrEmpty(searchBar.Text))
+            {
+                searchBar.SearchCommand.Execute(string.Empty);
+            }
         }
     }
 }

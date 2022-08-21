@@ -1,4 +1,3 @@
-using System.Threading.Tasks;
 using System.Windows.Input;
 using MySpectrum.Core.Services;
 using MySpectrumApp.Views;
@@ -58,8 +57,8 @@ namespace MySpectrumApp.ViewModels
         }
 
         private void UpdateLoginAvailability() =>
-            AllowLogin = !string.IsNullOrWhiteSpace(UserName) &&
-                         !string.IsNullOrWhiteSpace(Password);
+            AllowLogin = !string.IsNullOrWhiteSpace(UserName) && UserName.Length > 2 &&
+                         !string.IsNullOrWhiteSpace(Password) && Password.Length > 2;
 
         private async void PerformLogin()
         {
