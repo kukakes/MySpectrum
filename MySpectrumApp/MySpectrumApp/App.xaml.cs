@@ -1,10 +1,10 @@
-﻿using System;
+﻿using MySpectrum.Core.Repositories;
 using MySpectrum.Core.Services;
+using MySpectrum.DataStore;
 using MySpectrum.Services;
 using MySpectrumApp.ViewModels;
 using MySpectrumApp.Views;
 using Prism;
-using Prism.DryIoc;
 using Prism.Ioc;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -18,7 +18,6 @@ namespace MySpectrumApp
         public App(IPlatformInitializer platformInitializer)
             :base(platformInitializer)
         {
-            //MainPage = new LoginView();
         }
 
         protected override void OnStart()
@@ -46,10 +45,13 @@ namespace MySpectrumApp
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.Register<ILoginService, LoginService>();
+            containerRegistry.Register<IProductsService, ProductsService>();
+            containerRegistry.Register<IProductDataStore, ProductDataStore>();
             
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<LoginView, LoginViewModel>();
             containerRegistry.RegisterForNavigation<ProductsListView, ProductsListViewModel>();
+            containerRegistry.RegisterForNavigation<ProductDetailsView, ProductDetailsViewModel>();
         }
     }
 }
