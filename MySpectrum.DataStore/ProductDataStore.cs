@@ -87,7 +87,6 @@ namespace MySpectrum.DataStore
                     Description = p.Value.Description,
                     Price = p.Value.Price
                 }));
-        
 
 
         public Task<ProductDetails> GetProductDetails(Guid productId) =>

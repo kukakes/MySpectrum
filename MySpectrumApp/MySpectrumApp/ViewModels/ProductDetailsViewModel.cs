@@ -1,6 +1,8 @@
 using System;
+using System.Windows.Input;
 using MySpectrum.Core.Models;
 using MySpectrum.Core.Services;
+using Prism.Commands;
 using Prism.Navigation;
 
 namespace MySpectrumApp.ViewModels
@@ -29,6 +31,13 @@ namespace MySpectrumApp.ViewModels
             var productId = parameters.GetValue<string>("id");
             LoadProduct(Guid.Parse(productId));
         }
+
+        private ICommand _goBackCommand;
+
+        public ICommand GoBackCommand =>
+            _goBackCommand ??=
+                new DelegateCommand(() => _navigationService.GoBackAsync());
+        
 
         private async void LoadProduct(Guid productId) =>
             Product = await _productsService.GetProductDetails(productId);

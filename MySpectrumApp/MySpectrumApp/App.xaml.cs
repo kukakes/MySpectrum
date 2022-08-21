@@ -37,10 +37,10 @@ namespace MySpectrumApp
 
         protected override async void OnInitialized()
         {
-            InitializeComponent();
+            InitializeComponent(); 
 
             //await NavigationService.NavigateAsync($"{nameof(LoginView)}");
-            await NavigationService.NavigateAsync($"{nameof(ProductsListView)}");
+            await NavigationService.NavigateAsync($"{nameof(NavigationPage)}/{nameof(ProductsListView)}");
         }
         
         protected override void RegisterTypes(IContainerRegistry containerRegistry)

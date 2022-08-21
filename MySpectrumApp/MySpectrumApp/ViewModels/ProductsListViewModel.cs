@@ -54,10 +54,10 @@ namespace MySpectrumApp.ViewModels
         private ICommand _productSelectedCommand;
         public ICommand ProductSelectedCommand =>
             _productSelectedCommand ??=
-                new DelegateCommand<ProductSummary> ((e) =>
+                new DelegateCommand<ProductSummary> (async(e) =>
                 {
                     SelectedProduct = e;
-                    ShowSelectedProductDetails();
+                    await ShowSelectedProductDetails();
                 });
 
 
@@ -88,7 +88,7 @@ namespace MySpectrumApp.ViewModels
         {
             Products?.Clear();
             
-            var allProducts = await _productsService.GetAllProductsSummary(SearchFilter);
+            var allProducts = await _productsService.GetAllProductsSummary(SearchFilter?.ToLower());
             Products = new ObservableCollection<ProductSummary>(allProducts);
             
             ApplySort();
@@ -104,8 +104,17 @@ namespace MySpectrumApp.ViewModels
             Products = new ObservableCollection<ProductSummary>(sortedProducts);
         }
 
-        private async void ShowSelectedProductDetails() =>
+        // private async void ShowSelectedProductDetails()
+        // {
+        //     var navParams = new NavigationParameters()
+        //     {
+        //         {"id", SelectedProduct.Id}
+        //     };
+        //     
+        //     await _navigationService.NavigateAsync($"{nameof(ProductDetailsView)}", navParams);
+        // }
+        private async Task ShowSelectedProductDetails() =>
             await _navigationService.NavigateAsync(new Uri($"{nameof(ProductDetailsView)}?id={SelectedProduct.Id}", 
-                UriKind.Relative), useModalNavigation: true);
+                UriKind.Relative), useModalNavigation: false);
     }
 }
