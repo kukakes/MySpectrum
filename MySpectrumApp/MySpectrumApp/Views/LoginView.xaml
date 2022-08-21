@@ -5,6 +5,7 @@
              x:DataType="vm:LoginViewModel"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
              ios:Page.UseSafeArea="true"
+             xmlns:behaviors="clr-namespace:MySpectrumApp.Behaviors"
              xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
              android:Application.WindowSoftInputModeAdjust="Resize"
              xmlns:effects="clr-namespace:MySpectrumApp.Effects"
@@ -36,16 +37,19 @@
                    HorizontalTextAlignment="Center"
                    FlexLayout.Basis="100%"/>
 
-            <Label Text="Enter any value for id and password to proceed"
+            <Label Text="Enter any text more than 2 chars for id and password to proceed"
                    Margin="0,60,0,80"
                    HorizontalTextAlignment="Start"
                    FlexLayout.Basis="100%"/>
 
             <Label Text="Login Id" WidthRequest="100"/>
-            <Entry Text="{Binding UserName}" >
+            <Entry Text="{Binding UserName}">
                 <Entry.Effects>
                     <effects:EntryWithNoUnderlineEffect/>
                 </Entry.Effects>
+                <Entry.Behaviors>
+                    <behaviors:EntryLengthValidatorBehavior/>
+                </Entry.Behaviors>
             </Entry>
 
             <BoxView FlexLayout.Basis="100%"  HeightRequest="12"/>
@@ -54,6 +58,9 @@
                 <Entry.Effects>
                     <effects:EntryWithNoUnderlineEffect/>
                 </Entry.Effects>
+                <Entry.Behaviors>
+                    <behaviors:EntryLengthValidatorBehavior/>
+                </Entry.Behaviors>
             </Entry>
 
             <BoxView FlexLayout.Basis="100%" HeightRequest="60"/>
