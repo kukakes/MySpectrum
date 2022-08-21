@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
@@ -69,10 +70,13 @@ namespace MySpectrumApp.ViewModels
         private ICommand _applySearchFilterCommand;
         public ICommand ApplySearchFilterCommand =>
             _applySearchFilterCommand ??=
-                new DelegateCommand<string>((e) =>
+                new DelegateCommand<string>(async(e) =>
                 {
+                    if (SearchFilter == e)
+                        return;
+
                     SearchFilter = e;
-                    LoadProducts();
+                    await LoadProducts();
                 });
         
         public override void OnNavigatedTo(INavigationParameters parameters) =>
@@ -84,12 +88,12 @@ namespace MySpectrumApp.ViewModels
             ApplySort();
         }
         
-        private async void LoadProducts()
+        private async Task LoadProducts()
         {
             Products?.Clear();
             
             var allProducts = await _productsService.GetAllProductsSummary(SearchFilter?.ToLower());
-            Products = new ObservableCollection<ProductSummary>(allProducts);
+            Products = new ObservableCollection<ProductSummary>(allProducts?? Enumerable.Empty<ProductSummary>());
             
             ApplySort();
         }
@@ -97,10 +101,10 @@ namespace MySpectrumApp.ViewModels
         private void ApplySort()
         {
             var sortedProducts = AscendingSortOrder
-                ? Products.OrderBy(p => p.Title).ToList()
-                : Products.OrderByDescending(p => p.Title).ToList();
+                ? Products?.OrderBy(p => p.Title).ToList()
+                : Products?.OrderByDescending(p => p.Title).ToList();
             
-            Products.Clear();
+            //Products?.Clear();
             Products = new ObservableCollection<ProductSummary>(sortedProducts);
         }
 

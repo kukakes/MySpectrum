@@ -20,4 +20,12 @@
       <ProjectReference Include="..\..\MySpectrum.DataStore\MySpectrum.DataStore.csproj" />
       <ProjectReference Include="..\..\MySpectrum.Services\MySpectrum.Services.csproj" />
     </ItemGroup>
+    <ItemGroup>
+      <None Remove="Behaviors\" />
+      <None Remove="Converters\" />
+    </ItemGroup>
+    <ItemGroup>
+      <Folder Include="Behaviors\" />
+      <Folder Include="Converters\" />
+    </ItemGroup>
 </Project>

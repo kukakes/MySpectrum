@@ -3,35 +3,45 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
              ios:Page.UseSafeArea="true"
+             xmlns:converters="clr-namespace:MySpectrumApp.Converters"
              xmlns:vm="clr-namespace:MySpectrumApp.ViewModels;assembly=MySpectrumApp"
              xmlns:model="clr-namespace:MySpectrum.Core.Models;assembly=MySpectrum.Core"
              x:DataType="vm:ProductsListViewModel"
              x:Class="MySpectrumApp.Views.ProductsListView">
     <NavigationPage.TitleView>
-        <Label Text="Products Listing"
+        <Label Text="Spectrum Products Listing"
                FontAttributes="Bold"
+               FontSize="24"
                HorizontalTextAlignment="Center"/>
     </NavigationPage.TitleView>
     <ContentPage.Content>
         <Grid RowDefinitions="Auto, Auto, *">
+            <Grid.Resources>
+                <ResourceDictionary>
+                    <converters:SortButtonTextConverter x:Key="sortConverter"/>
+                </ResourceDictionary>
+            </Grid.Resources>
+
             <SearchBar x:Name="search"
                        CancelButtonColor="Red"
                        Placeholder="search title"
+                       IsSpellCheckEnabled="False"
                        SearchCommand="{Binding ApplySearchFilterCommand}" 
                        SearchCommandParameter="{Binding Text, Source={x:Reference search}}"/>
-            <Button Text="Sort"
+            <Button Text="{Binding AscendingSortOrder, Converter={StaticResource sortConverter}}"
                     BackgroundColor="LightGray"
+                    Margin="20,0"
                     HorizontalOptions="End"
                     WidthRequest="80"
                     TextColor="DarkRed"
                     Grid.Row="1"
                     Command="{Binding ChangeSortOrderCommand}"/>
-            <StackLayout BackgroundColor="White"
-                         Padding="0,10"
-                         x:Name="prods"
-                      BindableLayout.ItemsSource="{Binding Products}"
+            
+            <CollectionView BackgroundColor="White"
+                            x:Name="coll"
+                      ItemsSource="{Binding Products}"
                       Grid.Row="2">
-                <BindableLayout.ItemTemplate>
+                <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="model:ProductSummary">
                         <FlexLayout HeightRequest="120"
                                     Padding="20,0"
@@ -54,16 +64,20 @@
                                    FontSize="20"/>
                             <Label Text=">" FlexLayout.Basis="100%"
                                    HorizontalTextAlignment="End"/>
+                            <BoxView FlexLayout.Basis="100%"
+                                     BackgroundColor="White"
+                                     HeightRequest="2"/>
                             <FlexLayout.GestureRecognizers>
                                 <TapGestureRecognizer 
                                     CommandParameter="{Binding .}"
-                                    Command="{Binding Source={x:Reference prods}, Path=BindingContext.ProductSelectedCommand}"/>
+                                    Command="{Binding Source={x:Reference coll}, Path=BindingContext.ProductSelectedCommand}"/>
                             </FlexLayout.GestureRecognizers>
                         </FlexLayout>
                         
                     </DataTemplate>
-                </BindableLayout.ItemTemplate>
-            </StackLayout>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
         </Grid>
     </ContentPage.Content>
 </ContentPage>
