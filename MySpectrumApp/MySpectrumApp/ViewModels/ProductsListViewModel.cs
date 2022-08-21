@@ -52,15 +52,38 @@ namespace MySpectrumApp.ViewModels
         }
 
         private ICommand _productSelectedCommand;
-        public ICommand ProductSelectedCommand
-        {
-            get => _productSelectedCommand ??=
-                new DelegateCommand(ShowSelectedProductDetails);
-        }
+        public ICommand ProductSelectedCommand =>
+            _productSelectedCommand ??=
+                new DelegateCommand<ProductSummary> ((e) =>
+                {
+                    SelectedProduct = e;
+                    ShowSelectedProductDetails();
+                });
 
+
+        private ICommand _changeSortOrderCommand;
+        public ICommand ChangeSortOrderCommand =>
+            _changeSortOrderCommand ??=
+                new DelegateCommand(ChangeSortOrder);
+
+        private ICommand _applySearchFilterCommand;
+        public ICommand ApplySearchFilterCommand =>
+            _applySearchFilterCommand ??=
+                new DelegateCommand<string>((e) =>
+                {
+                    SearchFilter = e;
+                    LoadProducts();
+                });
+        
         public override void OnNavigatedTo(INavigationParameters parameters) =>
             LoadProducts();
 
+        private void ChangeSortOrder()
+        {
+            AscendingSortOrder = !AscendingSortOrder;
+            ApplySort();
+        }
+        
         private async void LoadProducts()
         {
             Products?.Clear();
@@ -68,21 +91,21 @@ namespace MySpectrumApp.ViewModels
             var allProducts = await _productsService.GetAllProductsSummary(SearchFilter);
             Products = new ObservableCollection<ProductSummary>(allProducts);
             
-            ApplyFilter();
+            ApplySort();
         }
 
-        private void ApplyFilter()
+        private void ApplySort()
         {
             var sortedProducts = AscendingSortOrder
-                ? Products.OrderBy(p => p.Title)
-                : Products.OrderByDescending(p => p.Title);
+                ? Products.OrderBy(p => p.Title).ToList()
+                : Products.OrderByDescending(p => p.Title).ToList();
             
             Products.Clear();
             Products = new ObservableCollection<ProductSummary>(sortedProducts);
         }
 
         private async void ShowSelectedProductDetails() =>
-            await _navigationService.NavigateAsync(new Uri($"{nameof(ProductDetailsView)}?id={SelectedProduct.Id}", UriKind.Relative));
-        
+            await _navigationService.NavigateAsync(new Uri($"{nameof(ProductDetailsView)}?id={SelectedProduct.Id}", 
+                UriKind.Relative), useModalNavigation: true);
     }
 }

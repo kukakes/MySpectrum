@@ -2,12 +2,53 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              Title="Products Listing"
+             xmlns:vm="clr-namespace:MySpectrumApp.ViewModels;assembly=MySpectrumApp"
+             xmlns:model="clr-namespace:MySpectrum.Core.Models;assembly=MySpectrum.Core"
+             x:DataType="vm:ProductsListViewModel"
              x:Class="MySpectrumApp.Views.ProductsListView">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Hello, world!cc"
-                   VerticalOptions="CenterAndExpand"
-                   HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <Grid RowDefinitions="Auto, Auto, *">
+            <SearchBar x:Name="search"
+                       Placeholder="search title"
+                       SearchCommand="{Binding ApplySearchFilterCommand}" 
+                       SearchCommandParameter="{Binding Text, Source={x:Reference search}}"/>
+            <Button Text="Sort"
+                    HorizontalOptions="End"
+                    Grid.Row="1"
+                    Command="{Binding ChangeSortOrderCommand}"/>
+            <StackLayout BackgroundColor="WhiteSmoke"
+                         Padding="0,10"
+                         x:Name="prods"
+                      BindableLayout.ItemsSource="{Binding Products}"
+                      Grid.Row="2">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate x:DataType="model:ProductSummary">
+                        <FlexLayout HeightRequest="120"
+                                    Padding="20,0"
+                                    Wrap="Wrap"
+                                    BackgroundColor="White"
+                                    JustifyContent="Start"
+                                    AlignItems="Center"
+                                    AlignContent="Start"
+                                    Direction="Row">
+                            <Label Text="{Binding Title}"
+                                   FontSize="24"/>
+                            <BoxView FlexLayout.Grow="1"/>
+                            <Label Text="{Binding Price, StringFormat='${0}'}"
+                                   FontSize="20"/>
+                            <BoxView FlexLayout.Basis="100%" HeightRequest="10"/>
+                            <Label Text="{Binding Description}"
+                                   FontSize="20"/>
+                            <FlexLayout.GestureRecognizers>
+                                <TapGestureRecognizer 
+                                    CommandParameter="{Binding .}"
+                                    Command="{Binding Source={x:Reference prods}, Path=BindingContext.ProductSelectedCommand}"/>
+                            </FlexLayout.GestureRecognizers>
+                        </FlexLayout>
+                        
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </StackLayout>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

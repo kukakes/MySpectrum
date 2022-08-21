@@ -2,12 +2,49 @@
 
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Title="Product Details"
+             xmlns:vm="clr-namespace:MySpectrumApp.ViewModels;assembly=MySpectrumApp"
+             x:DataType="vm:ProductDetailsViewModel"
              x:Class="MySpectrumApp.Views.ProductDetailsView">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Hello, world!"
-                   VerticalOptions="CenterAndExpand"
-                   HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <FlexLayout Direction="Row"
+                    Padding="20"
+                    AlignItems="Start"
+                    AlignContent="Start"
+                    JustifyContent="Start"
+                    Wrap="Wrap">
+            <Label Text="{Binding Product.Title}"
+                   FontSize="32"
+                   FlexLayout.Basis="100%"/>
+            <Grid HeightRequest="220"
+                  BackgroundColor="Lavender"
+                  FlexLayout.Basis="100%"/>
+            <Label Text="{Binding Product.Description}"
+                   FontSize="26"
+                   FlexLayout.Basis="100%"/>
+            <Label FontSize="24">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Price: " FontSize="24" FontAttributes="Bold"/>
+                        <Span Text="$"/>
+                        <Span Text="{Binding Product.Price}"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Label Text="In Stock" 
+                   FontAttributes="Bold"
+                   FontSize="22"
+                   TextColor="Green"
+                   FlexLayout.Basis="100%">
+                <Label.Triggers>
+                    <DataTrigger TargetType="Label"
+                                 Binding="{Binding Product.OutofStock}"
+                                 Value="true">
+                        <Setter Property="TextColor" Value="Red"/>
+                        <Setter Property="Text" Value="Out of Stock"></Setter>
+                    </DataTrigger>
+                </Label.Triggers>
+            </Label>
+        </FlexLayout>
     </ContentPage.Content>
 </ContentPage>

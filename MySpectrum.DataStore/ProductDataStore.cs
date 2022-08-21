@@ -59,6 +59,12 @@ namespace MySpectrum.DataStore
                 OutofStock = true,
                 Price = 45.23
             };
+
+            _sProducts[productDetails1.Id] = productDetails1;
+            _sProducts[productDetails2.Id] = productDetails2;
+            _sProducts[productDetails3.Id] = productDetails3;
+            _sProducts[productDetails4.Id] = productDetails4;
+            _sProducts[productDetails5.Id] = productDetails5;
         }
 
         public Task<IEnumerable<ProductSummary>> GetAllProductsSummary() =>
