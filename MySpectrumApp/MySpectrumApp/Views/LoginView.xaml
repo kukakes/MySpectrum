@@ -5,6 +5,9 @@
              x:DataType="vm:LoginViewModel"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
              ios:Page.UseSafeArea="true"
+             xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+             android:Application.WindowSoftInputModeAdjust="Resize"
+             xmlns:effects="clr-namespace:MySpectrumApp.Effects"
              x:Class="MySpectrumApp.Views.LoginView">
     <ContentPage.Content>
         <FlexLayout Direction="Row"
@@ -13,6 +16,19 @@
                     JustifyContent="Start"
                     AlignContent="Start"
                     Margin="60,0">
+
+            <FlexLayout.Resources>
+                <ResourceDictionary>
+                    <Style TargetType="Entry">
+                        <Setter Property="IsSpellCheckEnabled" Value="False"/>
+                        <Setter Property="IsTextPredictionEnabled" Value="False"/>
+                        <Setter Property="WidthRequest" Value="120"/>
+                        <Setter Property="TextColor" Value="Black"/>
+                        <Setter Property="BackgroundColor" Value="LightGray"/>
+                    </Style>
+                </ResourceDictionary>
+            </FlexLayout.Resources>
+
             <Label Text="Welcome to Sample App"
                    Margin="0,60,0,0"
                    FontAttributes="Bold"
@@ -26,20 +42,19 @@
                    FlexLayout.Basis="100%"/>
 
             <Label Text="Login Id" WidthRequest="100"/>
-            <Entry Text="{Binding UserName}"
-                   HorizontalOptions="Center"
-                   WidthRequest="120"
-                   TextColor="Black"
-                   BackgroundColor="LightGray"/>
+            <Entry Text="{Binding UserName}" >
+                <Entry.Effects>
+                    <effects:EntryWithNoUnderlineEffect/>
+                </Entry.Effects>
+            </Entry>
 
             <BoxView FlexLayout.Basis="100%"  HeightRequest="12"/>
             <Label Text="Password" WidthRequest="100"/>
-            <Entry Text="{Binding Password}"
-                   HorizontalOptions="Center"
-                   WidthRequest="120"
-                   IsSpellCheckEnabled="False"
-                   TextColor="Black"
-                   BackgroundColor="LightGray"/>
+            <Entry Text="{Binding Password}">
+                <Entry.Effects>
+                    <effects:EntryWithNoUnderlineEffect/>
+                </Entry.Effects>
+            </Entry>
 
             <BoxView FlexLayout.Basis="100%" HeightRequest="60"/>
             <Button Text="Login"

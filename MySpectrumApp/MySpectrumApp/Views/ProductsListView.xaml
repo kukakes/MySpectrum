@@ -15,7 +15,8 @@
                HorizontalTextAlignment="Center"/>
     </NavigationPage.TitleView>
     <ContentPage.Content>
-        <Grid RowDefinitions="Auto, Auto, *">
+        <Grid RowDefinitions="Auto, Auto, *"
+              RowSpacing="0">
             <Grid.Resources>
                 <ResourceDictionary>
                     <converters:SortButtonTextConverter x:Key="sortConverter"/>
@@ -28,6 +29,7 @@
                        IsSpellCheckEnabled="False"
                        SearchCommand="{Binding ApplySearchFilterCommand}" 
                        SearchCommandParameter="{Binding Text, Source={x:Reference search}}"/>
+
             <Button Text="{Binding AscendingSortOrder, Converter={StaticResource sortConverter}}"
                     BackgroundColor="LightGray"
                     Margin="20,0"
@@ -43,7 +45,7 @@
                       Grid.Row="2">
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="model:ProductSummary">
-                        <FlexLayout HeightRequest="120"
+                        <FlexLayout HeightRequest="140"
                                     Padding="20,0"
                                     Wrap="Wrap"
                                     BackgroundColor="WhiteSmoke"
@@ -51,10 +53,18 @@
                                     AlignItems="Center"
                                     AlignContent="Start"
                                     Direction="Row">
+
+                            <BoxView FlexLayout.Basis="100%"
+                                     BackgroundColor="White"
+                                     HeightRequest="2"/>
+
                             <Label Text="{Binding Title}"
+                                   WidthRequest="180"
+                                   LineBreakMode="TailTruncation"
+                                   FontAttributes="Bold"
                                    FontSize="24"/>
                             <BoxView FlexLayout.Grow="1"/>
-                            <Label Text="{Binding Price, StringFormat='${0}'}"
+                            <Label Text="{Binding Price, StringFormat='${0:0.00}'}"
                                    FontSize="20"
                                    Margin="20,0"/>
                             <BoxView FlexLayout.Basis="100%" HeightRequest="10"/>
@@ -64,9 +74,7 @@
                                    FontSize="20"/>
                             <Label Text=">" FlexLayout.Basis="100%"
                                    HorizontalTextAlignment="End"/>
-                            <BoxView FlexLayout.Basis="100%"
-                                     BackgroundColor="White"
-                                     HeightRequest="2"/>
+                            
                             <FlexLayout.GestureRecognizers>
                                 <TapGestureRecognizer 
                                     CommandParameter="{Binding .}"

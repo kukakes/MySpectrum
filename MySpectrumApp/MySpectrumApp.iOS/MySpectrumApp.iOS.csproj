@@ -93,6 +93,7 @@
         <None Include="Entitlements.plist" />
         <None Include="Info.plist" />
         <Compile Include="Properties\AssemblyInfo.cs" />
+        <Compile Include="CustomRenderers\GradientLabelRenderer.cs" />
     </ItemGroup>
     <ItemGroup>
         <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
@@ -112,9 +113,12 @@
     </ItemGroup>
     <ItemGroup>
         <ProjectReference Include="..\MySpectrumApp\MySpectrumApp.csproj">
-            <Project>{687F7D3F-BBB5-4176-B56E-E5C2407B907A}</Project>
+            <Project>{03DDC3A1-9662-4290-9A5D-A786460A92F7}</Project>
             <Name>MySpectrumApp</Name>
         </ProjectReference>
+    </ItemGroup>
+    <ItemGroup>
+      <Folder Include="CustomRenderers\" />
     </ItemGroup>
     <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

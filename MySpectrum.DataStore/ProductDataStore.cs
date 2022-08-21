@@ -18,7 +18,7 @@ namespace MySpectrum.DataStore
             var productDetails1 = new ProductDetails()
             {
                 Id = Guid.NewGuid(),
-                Title = "Lego Set",
+                Title = "Lego Set ToyStore",
                 Description = "Lego Set Toy for Kids. This is a description",
                 OutofStock = false,
                 Price = 45.23
@@ -27,7 +27,7 @@ namespace MySpectrum.DataStore
             var productDetails2 = new ProductDetails()
             {
                 Id = Guid.NewGuid(),
-                Title = "Super Mario",
+                Title = "Super Mario Super Smash",
                 Description = "Mario Bros for Kids set. Bla bla bla",
                 OutofStock = false,
                 Price = 34.22
@@ -36,7 +36,7 @@ namespace MySpectrum.DataStore
             var productDetails3 = new ProductDetails()
             {
                 Id = Guid.NewGuid(),
-                Title = "SnackMagic",
+                Title = "SnackMagic Pantry",
                 Description = "Healthy food snack",
                 OutofStock = true,
                 Price = 50.00
@@ -54,7 +54,7 @@ namespace MySpectrum.DataStore
             var productDetails5 = new ProductDetails()
             {
                 Id = Guid.NewGuid(),
-                Title = "Apple Watch",
+                Title = "Apple Watch V2",
                 Description = "Brand new special offer",
                 OutofStock = true,
                 Price = 275.13
@@ -72,7 +72,7 @@ namespace MySpectrum.DataStore
             var productDetails7 = new ProductDetails()
             {
                 Id = Guid.NewGuid(),
-                Title = "Super Mario",
+                Title = "Super Mario Race Car",
                 Description = "Mario Bros for Kids set",
                 OutofStock = false,
                 Price = 34.22
@@ -90,7 +90,7 @@ namespace MySpectrum.DataStore
             var productDetails9 = new ProductDetails()
             {
                 Id = Guid.NewGuid(),
-                Title = "LCD TV",
+                Title = "Super LED TV",
                 Description = "Samsung 45inch super bright",
                 OutofStock = false,
                 Price = 1199.99

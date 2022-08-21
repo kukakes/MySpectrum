@@ -5,6 +5,7 @@
              Title="Product Details"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
              ios:Page.UseSafeArea="true"
+             xmlns:controls="clr-namespace:MySpectrumApp.CustomRenderers"
              xmlns:vm="clr-namespace:MySpectrumApp.ViewModels;assembly=MySpectrumApp"
              x:DataType="vm:ProductDetailsViewModel"
              x:Class="MySpectrumApp.Views.ProductDetailsView">
@@ -15,11 +16,11 @@
                     AlignContent="Start"
                     JustifyContent="Start"
                     Wrap="Wrap">
-            <Label Text="{Binding Product.Title}"
+            <controls:GradientColorLabel
+                  Text="{Binding Product.Title}"
                    FontSize="32"
-                   
                    HorizontalTextAlignment="Center"
-                   BackgroundColor="LightBlue"
+                   BackgroundColor="Transparent"
                    FlexLayout.Basis="100%"/>
             <Grid HeightRequest="220"
                   Margin="0,10"

@@ -23,9 +23,13 @@
     <ItemGroup>
       <None Remove="Behaviors\" />
       <None Remove="Converters\" />
+      <None Remove="Effects\" />
+      <None Remove="CustomRenderers\" />
     </ItemGroup>
     <ItemGroup>
       <Folder Include="Behaviors\" />
       <Folder Include="Converters\" />
+      <Folder Include="Effects\" />
+      <Folder Include="CustomRenderers\" />
     </ItemGroup>
 </Project>
