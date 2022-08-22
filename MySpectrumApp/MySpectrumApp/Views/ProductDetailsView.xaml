@@ -22,15 +22,26 @@
                    HorizontalTextAlignment="Center"
                    BackgroundColor="Transparent"
                    FlexLayout.Basis="100%"/>
-            <Grid HeightRequest="220"
-                  Margin="0,10"
-                  BackgroundColor="Lavender"
-                  FlexLayout.Basis="100%"/>
-            <Label Text="Product Image Placeholder"
-                   FlexLayout.Basis="100%"
-                   FontSize="12"
-                   Margin="0,0,0,24"
-                   HorizontalTextAlignment="Center"/>
+            <CarouselView FlexLayout.Basis="100%" 
+                          Margin="0,10"
+                          ItemsSource="{Binding ProductImages}"
+                          IndicatorView="productImagesIndicator"
+                          HeightRequest="220">
+                <CarouselView.ItemTemplate>
+                    <DataTemplate x:DataType="x:Uri">
+                        <Image Source="{Binding .}" 
+                                Aspect="AspectFit"
+                               BackgroundColor="LightBlue"/>
+                        <!-- <Grid BackgroundColor="Lavender"/> -->
+                    </DataTemplate>
+                </CarouselView.ItemTemplate>
+            </CarouselView>
+            <IndicatorView FlexLayout.Basis="100%"
+                           IndicatorColor="LightGray"
+                           SelectedIndicatorColor="DarkGray"
+                           HorizontalOptions="Center" 
+                           Margin="0,0,0,30"
+                           x:Name="productImagesIndicator"/>
             <Label Text="{Binding Product.Description}"
                    FontSize="26"
                    FontAttributes="Italic"
